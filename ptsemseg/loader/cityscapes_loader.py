@@ -84,9 +84,12 @@ class cityscapesLoader(data.Dataset):
         self.annotations_base = os.path.join(self.root, "gtFine_trainvaltest", "annotations_all", self.split)
 
         self.files[split] = recursive_glob(rootdir=self.images_base, suffix=".png")
+        if len(self.files[split]) == 0:
+            self.files[split] = recursive_glob(rootdir=self.images_base, suffix=".jpg")
 
-        self.void_classes = [0, 1, 2, 3, 4, 5, 6, 9, 10, 14, 15, 16, 18, 29, 30, -1]
-        self.valid_classes = [
+        self.void_classes = [19,20,250,251,252,253,254,255]#0, 1, 2, 3, 4, 5, 6, 9, 10, 14, 15, 16, 18, 29, 30, -1]
+        self.valid_classes = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18] #self.valid_classes 
+        ignore_me = [
             7,
             8,
             11,
@@ -148,11 +151,21 @@ class cityscapesLoader(data.Dataset):
         :param index:
         """
         img_path = self.files[self.split][index].rstrip()
+        fname0 = os.path.basename(img_path)
+        if fname0.find('_leftImg8bit') > 0:
+            fname0 = fname0[:-16]
+        else:
+            fname0 = fname0[:-4]
         lbl_path = os.path.join(
             self.annotations_base,
             img_path.split(os.sep)[-2],
-            os.path.basename(img_path)[:-15] + "gtFine_labelIds.png",
+            fname0 + "_gtFine_labelTrainIds.png",
         )
+        # lbl_path = os.path.join(
+        #     self.annotations_base,
+        #     # img_path.split(os.sep)[-2],
+        #     os.path.basename(img_path)[:-15] + "gtFine_labelIds.png",
+        # )
 
         img = plt.imread(img_path)
         img = np.array(img, dtype=np.uint8)
