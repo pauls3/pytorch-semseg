@@ -40,6 +40,7 @@ def train(cfg, writer, logger):
     # Setup Dataloader
     data_loader = get_loader(cfg["data"]["dataset"])
     data_path = cfg["data"]["path"]
+    print(data_path)
 
     t_loader = data_loader(
         data_path,
