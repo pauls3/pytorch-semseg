@@ -160,12 +160,15 @@ class cityscapesLoader(data.Dataset):
         img = plt.imread(img_path)
         img = np.array(img, dtype=np.uint8)
 
-        # print(self.annotations_base)
-        # print("---")
-        # print(img_path.split(os.sep)[-2])
-        # print("---")
-        # print(os.path.basename(img_path)[:-15] + "gtFine_labelIds.png")
-        # print(" ")
+        
+        print(lbl_path)
+        print("---")
+        print(self.annotations_base)
+        print("---")
+        print(img_path.split(os.sep)[-2])
+        print("---")
+        print(os.path.basename(img_path)[:-15] + "gtFine_labelIds.png")
+        print(" ")
 
         lbl = plt.imread(lbl_path)
         lbl = self.encode_segmap(np.array(lbl, dtype=np.uint8))
