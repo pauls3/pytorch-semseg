@@ -30,8 +30,7 @@ training:
         name: cosine_annealing
         T_max: 500
     momentum: 0.99
-    weight_decay: 0.0005
+    weight_decay: 0.000
     visdom: False
     loss:
         name: cross_entropy
-    resume: frrnB_cityscapes_best_model.pkl
