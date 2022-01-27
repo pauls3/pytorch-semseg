@@ -83,8 +83,6 @@ class cityscapesLoader(data.Dataset):
         self.images_base = os.path.join(self.root, "leftImg8bit_trainvaltest", "images_all", self.split)
         self.annotations_base = os.path.join(self.root, "gtFine_trainvaltest", "annotations_all", self.split)
 
-        raise Exception(self.annotations_base)
-
         self.files[split] = recursive_glob(rootdir=self.images_base, suffix=".png")
 
         self.void_classes = [0, 1, 2, 3, 4, 5, 6, 9, 10, 14, 15, 16, 18, 29, 30, -1]
