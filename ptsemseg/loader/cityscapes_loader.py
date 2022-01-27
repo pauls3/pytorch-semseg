@@ -2,6 +2,7 @@ import os
 import torch
 import numpy as np
 import scipy.misc as m
+import matplotlib.pyplot as plt
 
 from torch.utils import data
 
@@ -153,10 +154,10 @@ class cityscapesLoader(data.Dataset):
             os.path.basename(img_path)[:-15] + "gtFine_labelIds.png",
         )
 
-        img = m.imread(img_path)
+        img = plt.imread(img_path)
         img = np.array(img, dtype=np.uint8)
 
-        lbl = m.imread(lbl_path)
+        lbl = plt.imread(lbl_path)
         lbl = self.encode_segmap(np.array(lbl, dtype=np.uint8))
 
         if self.augmentations is not None:
