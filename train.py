@@ -116,7 +116,6 @@ def train(cfg, writer, logger):
 
     while i <= cfg["training"]["train_iters"] and flag:
         for (images, labels) in trainloader:
-            print(labels)
             i += 1
             start_ts = time.time()
             scheduler.step()
