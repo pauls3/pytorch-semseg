@@ -34,4 +34,4 @@ training:
     visdom: False
     loss:
         name: cross_entropy
-    resume: None
+    resume: frrnB_cityscapes_best_model.pkl
