@@ -153,7 +153,7 @@ class cityscapesLoader(data.Dataset):
         img_path = self.files[self.split][index].rstrip()
         lbl_path = os.path.join(
             self.annotations_base,
-            img_path.split(os.sep)[-3],
+            img_path.split(os.sep)[-1],
             os.path.basename(img_path)[:-15] + "gtFine_labelIds.png",
         )
 
