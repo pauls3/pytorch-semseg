@@ -196,7 +196,7 @@ class cityscapesLoader(data.Dataset):
 
         classes = np.unique(lbl)
         lbl = lbl.astype(float)
-        lbl = transform.resize(lbl, (self.img_size[0], self.img_size[1]), "nearest", mode="F")
+        lbl = transform.resize(lbl, (self.img_size[0], self.img_size[1]))
         lbl = lbl.astype(int)
 
         if not np.all(classes == np.unique(lbl)):
