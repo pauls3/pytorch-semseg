@@ -6,7 +6,7 @@ data:
     val_split: val
     img_rows: 512
     img_cols: 512
-    path: ../../../../Cityscapes/
+    path: ../../rtis_lab/data/Cityscapes/
 training:
     train_iters: 80000
     batch_size: 4
