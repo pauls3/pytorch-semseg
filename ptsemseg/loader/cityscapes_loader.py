@@ -231,7 +231,7 @@ if __name__ == "__main__":
 
     augmentations = Compose([Scale(2048), RandomRotate(10), RandomHorizontallyFlip(0.5)])
 
-    local_path = "../../rtis_lab/data/Cityscapes/"
+    local_path = "/home/stanik/rtis_lab/data/Cityscapes/"
     dst = cityscapesLoader(local_path, is_transform=True, augmentations=augmentations)
     bs = 4
     trainloader = data.DataLoader(dst, batch_size=bs, num_workers=0)
