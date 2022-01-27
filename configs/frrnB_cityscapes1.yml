@@ -34,3 +34,4 @@ training:
     visdom: False
     loss:
         name: cross_entropy
+    resume: null
