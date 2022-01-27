@@ -30,7 +30,8 @@ training:
         name: cosine_annealing
         T_max: 500
     momentum: 0.99
-    weight_decay: 0.000
+    weight_decay: 0.0005
     visdom: False
     loss:
         name: cross_entropy
+    resume:
