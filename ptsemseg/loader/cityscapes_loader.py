@@ -54,7 +54,7 @@ class cityscapesLoader(data.Dataset):
     def __init__(
         self,
         root,
-        split="train",
+        split,
         is_transform=False,
         img_size=(512, 1024),
         augmentations=None,
