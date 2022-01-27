@@ -151,21 +151,11 @@ class cityscapesLoader(data.Dataset):
         :param index:
         """
         img_path = self.files[self.split][index].rstrip()
-        fname0 = os.path.basename(img_path)
-        if fname0.find('_leftImg8bit') > 0:
-            fname0 = fname0[:-16]
-        else:
-            fname0 = fname0[:-4]
         lbl_path = os.path.join(
             self.annotations_base,
-            img_path.split(os.sep)[-2],
-            fname0 + "_gtFine_labelTrainIds.png",
+            img_path.split(os.sep)[-3],
+            os.path.basename(img_path)[:-15] + "gtFine_labelIds.png",
         )
-        # lbl_path = os.path.join(
-        #     self.annotations_base,
-        #     # img_path.split(os.sep)[-2],
-        #     os.path.basename(img_path)[:-15] + "gtFine_labelIds.png",
-        # )
 
         img = plt.imread(img_path)
         img = np.array(img, dtype=np.uint8)
