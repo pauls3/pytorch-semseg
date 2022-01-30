@@ -12,7 +12,7 @@ from ptsemseg.loader import get_loader
 from ptsemseg.metrics import runningScore
 from ptsemseg.utils import convert_state_dict
 
-torch.backends.cudnn.benchmark = True
+torch.backends.cudnn.benchmark = False
 
 
 def validate(cfg, args):
@@ -133,9 +133,20 @@ if __name__ == "__main__":
     )
     parser.set_defaults(measure_time=True)
 
+    parser.add_argument(
+        "--offline_res",
+        nargs="?",
+        type=str,
+        default="",
+        help="Path to folder with offline results",
+    )
+
     args = parser.parse_args()
 
     with open(args.config) as fp:
         cfg = yaml.load(fp)
+
+    #need to reduce batchsize to prevent cuda errors
+    cfg['training']['batch_size'] = 1
 
     validate(cfg, args)
