@@ -158,7 +158,7 @@ class cityscapesLoader_rs19(data.Dataset):
         lbl_path = os.path.join(
             self.annotations_base,
             img_path.split(os.sep)[-2],
-            fname0 + "_gtFine_labelTrainIds.png",
+            fname0 + "_gtFine_labelIds.png",
         )
 
         img = m.imread(img_path)
