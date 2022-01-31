@@ -25,4 +25,5 @@ def get_loader(name):
         "nyuv2": NYUv2Loader,
         "sunrgbd": SUNRGBDLoader,
         "vistas": mapillaryVistasLoader,
+        "cityscapes_r19": cityscapesLoader_rs19
     }[name]
