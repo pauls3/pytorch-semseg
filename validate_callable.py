@@ -43,15 +43,22 @@ def validate(cfg, args):
     # if val_delta < 1.0:
     #     val_delta = -1.0
         
+    # loader = data_loader(
+    #     data_path,
+    #     split=cfg["data"]["val_split"],
+    #     is_transform=True,
+    #     img_size=(cfg["model"].get("input_size",[cfg["data"].get("img_rows","same"), "same"])[0] , cfg["model"].get("input_size",["same",cfg["data"].get("img_cols", "same")])[1]),
+    #     version=cfg["data"].get("version","cityscapes"),
+    #     # asp_ratio_delta_min = 1.0/val_delta,
+    #     # asp_ratio_delta_max = val_delta,
+    #     img_norm=cfg["data"].get("img_norm",True),
+    # )
+
     loader = data_loader(
         data_path,
         split=cfg["data"]["val_split"],
         is_transform=True,
-        img_size=(cfg["model"].get("input_size",[cfg["data"].get("img_rows","same"), "same"])[0] , cfg["model"].get("input_size",["same",cfg["data"].get("img_cols", "same")])[1]),
-        version=cfg["data"].get("version","cityscapes"),
-        # asp_ratio_delta_min = 1.0/val_delta,
-        # asp_ratio_delta_max = val_delta,
-        img_norm=cfg["data"].get("img_norm",True),
+        img_size=(cfg["data"]["img_rows"], cfg["data"]["img_cols"]),
     )
 
     n_classes = loader.n_classes
