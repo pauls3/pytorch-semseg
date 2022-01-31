@@ -16,6 +16,7 @@ import scipy.misc as m
 torch.backends.cudnn.benchmark = True
 
 def filepath_to_dict_id(f):
+    print(f)
     return os.path.basename(f).replace('.png','').replace("_gtFine_labelTrainIds","").replace("_leftImg8bit","")
 
 def dict_gtfiles_ids(start_dir, pattern = "png"):
