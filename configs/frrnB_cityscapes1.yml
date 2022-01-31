@@ -1,7 +1,7 @@
 model:
     arch: frrnB
 data:
-    dataset: cityscapes
+    dataset: cityscapes_rs19
     train_split: train
     val_split: val
     img_rows: 512

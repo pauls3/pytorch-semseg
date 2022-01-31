@@ -8,6 +8,7 @@ from ptsemseg.loader.cityscapes_loader import cityscapesLoader
 from ptsemseg.loader.nyuv2_loader import NYUv2Loader
 from ptsemseg.loader.sunrgbd_loader import SUNRGBDLoader
 from ptsemseg.loader.mapillary_vistas_loader import mapillaryVistasLoader
+from ptsemseg.loader.cityscapes_loader_rs19 import cityscapesLoader_rs19
 
 
 def get_loader(name):
