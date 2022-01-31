@@ -87,8 +87,8 @@ class cityscapesLoader_rs19(data.Dataset):
         if len(self.files[split]) == 0:
             self.files[split] = recursive_glob(rootdir=self.images_base, suffix=".jpg")
             
-        self.void_classes = [19,20,250,251,252,253,254,255]#0, 1, 2, 3, 4, 5, 6, 9, 10, 14, 15, 16, 18, 29, 30, -1]
-        self.valid_classes = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18] #self.valid_classes 
+        self.void_classes = [0, 1, 2, 3, 4, 5, 6, 9, 10, 14, 15, 16, 18, 29, 30, -1]
+        self.valid_classes = [7, 8, 11, 12, 13, 17, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 31, 32, 33]
         ignore_me = [
             7,
             8,
