@@ -82,8 +82,8 @@ def test(args):
             outname = os.path.join(os.path.dirname(outdir), outfile0)
         img = misc.imread(f)
 
-        resized_img = misc.imresize(img, (loader.img_size[0], loader.img_size[1]), interp="bicubic")
-
+        # resized_img = misc.imresize(img, (loader.img_size[0], loader.img_size[1]), interp="bicubic")
+        resized_img = misc.imresize(img, (orig_size[0], orig_size[1]), interp="bicubic")
         img = resized_img
 
         if model_name in ["pspnet", "icnet", "icnetBN"]:
