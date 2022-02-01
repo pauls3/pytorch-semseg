@@ -2,7 +2,7 @@ model:
     arch: frrnB
 data:
     dataset: cityscapes_rs19
-    test_split: test
+    test_split: val
     img_rows: 512
     img_cols: 512
     path: /home/stanik/rtis_lab/data/Cityscapes/
