@@ -87,7 +87,7 @@ def test(args):
         print("Dense CRF Processed Mask Saved at: {}".format(dcrf_path))
 
     pred = np.squeeze(outputs.data.max(1)[1].cpu().numpy(), axis=0)
-    if model_name in ["pspnet", "icnet", "icnetBN"]:
+    if model_name in ["pspnet", "icnet", "icnetBN"] or args.resize_pred:
         pred = pred.astype(np.float32)
         # float32 with F mode, resize back to orig_size
         pred = misc.imresize(pred, orig_size, "nearest", mode="F")
@@ -145,7 +145,13 @@ if __name__ == "__main__":
         help="Disable DenseCRF based post-processing | \
                               False by default",
     )
-    parser.set_defaults(dcrf=False)
+    parser.add_argument(
+        "--resize_pred",
+        dest="resize_pred",
+        action="store_true",
+        help="Resize image to original input image size",
+    )
+    parser.set_defaults(dcrf=False, resize_pred=False)
 
     parser.add_argument(
         "--img_path", nargs="?", type=str, default=None, help="Path of the input image"
