@@ -33,9 +33,8 @@ def validate(cfg, args):
 
     n_classes = loader.n_classes
 
-    valloader = data.DataLoader(loader, batch_size=cfg["training"]["batch_size"], num_workers=8)
+    valloader = data.DataLoader(loader, batch_size=cfg["training"]["batch_size"], num_workers=1)
     running_metrics = runningScore(n_classes)
-    score, class_iou = running_metrics.get_scores()
 
     # Setup Model
 
@@ -45,27 +44,31 @@ def validate(cfg, args):
     model.eval()
     model.to(device)
 
-    for i, (images, labels) in tqdm(enumerate(valloader)):
-        start_time = timeit.default_timer()
+    with torch.no_grad():
+        for i, (images, labels) in tqdm(enumerate(valloader)):
+            start_time = timeit.default_timer()
 
-        images = images.to(device)
-        outputs = model(images)
-        pred = outputs.data.max(1)[1].cpu().numpy()
+            images = images.to(device)
+            outputs = model(images)
+            pred = outputs.data.max(1)[1].cpu().numpy()
 
-        gt = labels.data.cpu().numpy()
+            gt = labels.data.cpu().numpy()
 
-        if args.measure_time:
-            elapsed_time = timeit.default_timer() - start_time
-            print(
-                "Inference time \
-                  (iter {0:5d}): {1:3.5f} fps".format(
-                    i + 1, pred.shape[0] / elapsed_time
+            print(pred)
+            print(gt)
+
+            if args.measure_time:
+                elapsed_time = timeit.default_timer() - start_time
+                print(
+                    "Inference time \
+                    (iter {0:5d}): {1:3.5f} fps".format(
+                        i + 1, pred.shape[0] / elapsed_time
+                    )
                 )
-            )
-        running_metrics.update(gt, pred)
-        score, class_iou = running_metrics.get_scores()
-        print(score)
-    
+            running_metrics.update(gt, pred)
+            score, class_iou = running_metrics.get_scores()
+            print(score)
+            break
 
     score, class_iou = running_metrics.get_scores()
 
