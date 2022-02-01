@@ -30,7 +30,7 @@ def test(args):
     img = misc.imread(args.img_path)
 
     data_loader = get_loader(args.dataset)
-    loader = data_loader(root=None, is_transform=True, img_norm=args.img_norm, test_mode=True)
+    loader = data_loader(root="", is_transform=True, img_norm=args.img_norm, test_mode=True)
     n_classes = loader.n_classes
 
     resized_img = misc.imresize(img, (loader.img_size[0], loader.img_size[1]), interp="bicubic")
