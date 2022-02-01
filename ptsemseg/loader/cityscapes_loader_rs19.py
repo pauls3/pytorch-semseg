@@ -167,8 +167,6 @@ class cityscapesLoader_rs19(data.Dataset):
         lbl = m.imread(lbl_path)
         lbl = self.encode_segmap(np.array(lbl, dtype=np.uint8))
 
-        print(img_path, "\n", lbl_path)
-
         if self.augmentations is not None:
             img, lbl = self.augmentations(img, lbl)
 

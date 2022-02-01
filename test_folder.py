@@ -47,22 +47,8 @@ def validate(cfg, args):
         start_time = timeit.default_timer()
 
         images = images.to(device)
-
-        if args.eval_flip:
-            outputs = model(images)
-
-            # Flip images in numpy (not support in tensor)
-            outputs = outputs.data.cpu().numpy()
-            flipped_images = np.copy(images.data.cpu().numpy()[:, :, :, ::-1])
-            flipped_images = torch.from_numpy(flipped_images).float().to(device)
-            outputs_flipped = model(flipped_images)
-            outputs_flipped = outputs_flipped.data.cpu().numpy()
-            outputs = (outputs + outputs_flipped[:, :, :, ::-1]) / 2.0
-
-            pred = np.argmax(outputs, axis=1)
-        else:
-            outputs = model(images)
-            pred = outputs.data.max(1)[1].cpu().numpy()
+        outputs = model(images)
+        pred = outputs.data.max(1)[1].cpu().numpy()
 
         gt = labels.numpy()
 
@@ -75,6 +61,9 @@ def validate(cfg, args):
                 )
             )
         running_metrics.update(gt, pred)
+        score, class_iou = running_metrics.get_scores()
+        print(score)
+    
 
     score, class_iou = running_metrics.get_scores()
 
@@ -101,22 +90,6 @@ if __name__ == "__main__":
         default="fcn8s_pascal_1_26.pkl",
         help="Path to the saved model",
     )
-    parser.add_argument(
-        "--eval_flip",
-        dest="eval_flip",
-        action="store_true",
-        help="Enable evaluation with flipped image |\
-                              True by default",
-    )
-    parser.add_argument(
-        "--no-eval_flip",
-        dest="eval_flip",
-        action="store_false",
-        help="Disable evaluation with flipped image |\
-                              True by default",
-    )
-    parser.set_defaults(eval_flip=True)
-
     parser.add_argument(
         "--measure_time",
         dest="measure_time",
