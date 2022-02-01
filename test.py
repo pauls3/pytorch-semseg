@@ -74,6 +74,10 @@ def test(args):
 
         resized_img = misc.imresize(img, (loader.img_size[0], loader.img_size[1]), interp="bicubic")
 
+        print(loader.img_size[0])
+        print(loader.img_size[1])
+
+
         orig_size = img.shape[:-1]
         if model_name in ["pspnet", "icnet", "icnetBN"]:
             # uint8 with RGB mode, resize width and height which are odd numbers
