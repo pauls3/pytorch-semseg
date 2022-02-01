@@ -67,8 +67,8 @@ def test(args):
         outname = outdir
         if outp_is_dir:
             outfile0 = os.path.basename(f).replace('.jpg','.png')
-            if args.check_options:
-                outfile0 = args.version + "_" + str(args.img_norm) + outfile0
+            # if args.check_options:
+            #     outfile0 = args.version + "_" + str(args.img_norm) + outfile0
             outname = os.path.join(os.path.dirname(outdir), outfile0)
         img = misc.imread(f)
 
