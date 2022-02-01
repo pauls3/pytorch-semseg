@@ -4,7 +4,8 @@ import argparse
 import timeit
 import numpy as np
 
-from torch.utils import data
+from torch.utils import 
+from tqdm import tqdmdata
 
 
 from ptsemseg.models import get_model
@@ -43,14 +44,14 @@ def validate(cfg, args):
     model.eval()
     model.to(device)
 
-    for i, (images, labels) in enumerate(valloader):
+    for i, (images, labels) in tqdm(enumerate(valloader)):
         start_time = timeit.default_timer()
 
         images = images.to(device)
         outputs = model(images)
         pred = outputs.data.max(1)[1].cpu().numpy()
 
-        gt = labels.numpy()
+        gt = labels.data.cpu().numpy()
 
         if args.measure_time:
             elapsed_time = timeit.default_timer() - start_time
