@@ -54,7 +54,7 @@ class cityscapesLoader_rs19(data.Dataset):
         root,
         split="train",
         is_transform=False,
-        img_size=(512, 1024),
+        img_size=(512, 512),
         augmentations=None,
         img_norm=True,
         version="cityscapes",
