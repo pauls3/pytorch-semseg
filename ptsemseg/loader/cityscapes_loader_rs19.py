@@ -161,6 +161,8 @@ class cityscapesLoader_rs19(data.Dataset):
             fname0 + "_gtFine_labelIds.png",
         )
 
+        print(lbl_path)
+
         img = m.imread(img_path)
         img = np.array(img, dtype=np.uint8)
 
