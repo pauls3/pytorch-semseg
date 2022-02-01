@@ -57,7 +57,14 @@ def test(args):
     all_hists = np.zeros((num_files,n_classes),dtype=np.int32)
     all_qual = np.zeros((num_files),dtype=np.float)
     res_idx = 0
-        
+    
+    if args.inp_dim == None:
+        img = misc.imread(allfiles[0])
+        orig_size = img.shape[:-1]
+    else:
+        orig_size = [int(dim) for dim in args.inp_dim.split("x")]
+        orig_size = [orig_size[1],orig_size[0]]
+
 
     if outp_is_dir:
         outdir += '/'
@@ -78,7 +85,6 @@ def test(args):
         print(loader.img_size[1])
 
 
-        orig_size = img.shape[:-1]
         if model_name in ["pspnet", "icnet", "icnetBN"]:
             # uint8 with RGB mode, resize width and height which are odd numbers
             img = misc.imresize(img, (orig_size[0] // 2 * 2 + 1, orig_size[1] // 2 * 2 + 1))
@@ -175,6 +181,13 @@ if __name__ == "__main__":
     )
     parser.set_defaults(img_norm=True)
 
+    parser.add_argument(
+        "--inp_dim",
+        nargs="?",
+        type=str,
+        default=None,
+        help="Fix input/output dimensions (e.g. 1920x1080); default: use dimensions of first test image",
+    )
     parser.add_argument(
         "--dcrf",
         dest="dcrf",
