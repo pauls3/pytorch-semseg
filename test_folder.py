@@ -35,6 +35,7 @@ def validate(cfg, args):
 
     valloader = data.DataLoader(loader, batch_size=cfg["training"]["batch_size"], num_workers=8)
     running_metrics = runningScore(n_classes)
+    score, class_iou = running_metrics.get_scores()
 
     # Setup Model
 
