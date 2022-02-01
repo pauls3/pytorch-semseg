@@ -132,7 +132,7 @@ def test(args):
     
 
     # Setup Model
-    model_dict = {"arch": model_name, "input_size":tuple(orig_size)}
+    model_dict = {"arch": model_name}
     state = convert_state_dict(torch.load(args.model_path)["model_state"])
     potential_n_class = ['classif_conv.weight', 'classification.weight']
     
