@@ -58,6 +58,9 @@ def test(args):
     all_qual = np.zeros((num_files),dtype=np.float)
     res_idx = 0
     
+    img = misc.imread(allfiles[0])
+    out_size = img.shape[:-1]
+
     if args.inp_dim == None:
         img = misc.imread(allfiles[0])
         orig_size = img.shape[:-1]
@@ -140,7 +143,7 @@ def test(args):
         if model_name in ["pspnet", "icnet", "icnetBN"] or args.resize_pred:
             pred = pred.astype(np.float32)
             # float32 with F mode, resize back to orig_size
-            pred = misc.imresize(pred, orig_size, "nearest", mode="F")
+            pred = misc.imresize(pred, out_size, "nearest", mode="F")
 
         decoded = loader.decode_segmap(pred)
         # print("Classes found: ", np.unique(pred))
