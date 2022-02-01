@@ -54,8 +54,8 @@ def validate(cfg, args):
 
             gt = labels.data.cpu().numpy()
 
-            print(pred)
-            print(gt)
+            print(pred.shape())
+            print(gt.shape())
 
             if args.measure_time:
                 elapsed_time = timeit.default_timer() - start_time
