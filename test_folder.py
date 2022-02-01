@@ -4,8 +4,8 @@ import argparse
 import timeit
 import numpy as np
 
-from torch.utils import 
-from tqdm import tqdmdata
+from torch.utils import data
+from tqdm import tqdm
 
 
 from ptsemseg.models import get_model
