@@ -161,13 +161,13 @@ class cityscapesLoader_rs19(data.Dataset):
             fname0 + "_gtFine_labelIds.png",
         )
 
-        print(lbl_path)
-
         img = m.imread(img_path)
         img = np.array(img, dtype=np.uint8)
 
         lbl = m.imread(lbl_path)
         lbl = self.encode_segmap(np.array(lbl, dtype=np.uint8))
+
+        print(img_path, "\n", lbl_path)
 
         if self.augmentations is not None:
             img, lbl = self.augmentations(img, lbl)
