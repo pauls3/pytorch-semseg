@@ -32,4 +32,4 @@ training:
     visdom: False
     loss:
         name: cross_entropy
-    resume: /home/stanik/repos/pytorch-semseg/runs/frrnB_cityscapes1/bs_8_160k_iter/frrnBB_cityscapes_rs19_best_model.pkl
+    resume: /home/stanik/repos/pytorch-semseg/runs/frrnB_cityscapes1/bs_8_160k_iter/frrnB_cityscapes_rs19_best_model.pkl
