@@ -221,8 +221,8 @@ if __name__ == "__main__":
 
     augmentations = Compose([Scale(2048), RandomRotate(10), RandomHorizontallyFlip(0.5)])
 
-    # local_path = "../../../../RailSem19/rtis_lab/rs19_4000/"
-    local_path = "../../../../RailSem19/rtis_lab/custom_split/"
+    local_path = "../../../../rtis_lab/data/RailSem19/rs19_4000/"
+    # local_path = "../../../../rtis_lab/data/RailSem19/custom_split/"
     dst = railsem19Loader(local_path, is_transform=True, augmentations=augmentations)
     bs = 4
     trainloader = data.DataLoader(dst, batch_size=bs, num_workers=0)
