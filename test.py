@@ -4,7 +4,7 @@ import argparse, glob
 import numpy as np
 import scipy.misc as misc
 
-
+from PIL import Image
 from ptsemseg.models import get_model
 from ptsemseg.loader import get_loader
 from ptsemseg.utils import convert_state_dict
@@ -137,15 +137,19 @@ def test(args):
             misc.imsave(dcrf_path, decoded_crf)
             print("Dense CRF Processed Mask Saved at: {}".format(dcrf_path))
 
-        pred = np.squeeze(outputs.data.max(1)[1].cpu().numpy(), axis=0)
+        # pred = np.squeeze(outputs.data.max(1)[1].cpu().numpy(), axis=0)
+        # setting this temporarily for cityscapes output
+        pred = np.squeeze(outputs.data.max(1)[1].cpu().numpy(), axis=0).astype('uint8')
         if model_name in ["pspnet", "icnet", "icnetBN"] or args.resize_pred:
             pred = pred.astype(np.float32)
             # float32 with F mode, resize back to orig_size
             pred = misc.imresize(pred, out_size, "nearest", mode="F")
-
+        # pred = misc.imresize(pred, out_size, "nearest", mode="L")
         decoded = loader.decode_segmap(pred)
+        # Image.new("L", )
         # print("Classes found: ", np.unique(pred))
         misc.imsave(outname, decoded)
+        #
         # print("Segmentation Mask Saved at: {}".format(args.out_path))
 
 
