@@ -138,7 +138,7 @@ def test(args):
             print("Dense CRF Processed Mask Saved at: {}".format(dcrf_path))
 
         pred = np.squeeze(outputs.data.max(1)[1].cpu().numpy(), axis=0)
-        pred = np.array(pred, dtype=np.unit8)
+        pred = np.array(pred, dtype=np.uint8)
         # setting this temporarily for cityscapes output
         # pred = np.squeeze(outputs.data.max(1)[1].cpu().numpy(), axis=0).astype('uint8')
         if model_name in ["pspnet", "icnet", "icnetBN"] or args.resize_pred:
