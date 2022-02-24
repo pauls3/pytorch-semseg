@@ -145,7 +145,7 @@ def test(args):
             # float32 with F mode, resize back to orig_size
             pred = misc.imresize(pred, out_size, "nearest", mode="F")
         decoded = loader.decode_segmap(pred)
-        out_image = Image.frombytes("L", out_size, decoded)
+        out_image = Image.frombytes("L", (out_size[1],out_size[0]), decoded)
         out_image.save(outname)
         # print("Classes found: ", np.unique(pred))
         # misc.imsave(outname, decoded)
