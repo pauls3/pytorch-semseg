@@ -252,8 +252,8 @@ class cityscapesLoader_rs19(data.Dataset):
         # rgb[:, :, 1] = g / 255.0
         # rgb[:, :, 2] = b / 255.0
 
-        # return rgb
-        return np.asarray(rgb)
+        return rgb
+        # return np.asarray(rgb)
 
     def encode_segmap(self, mask):
         # Put all void classes to zero
