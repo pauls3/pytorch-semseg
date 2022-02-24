@@ -246,8 +246,9 @@ class cityscapesLoader_rs19(data.Dataset):
         # rgb[:, :, 0] = r / 255.0
         # rgb[:, :, 1] = g / 255.0
         # rgb[:, :, 2] = b / 255.0
-        rgb = np.zeros(temp.shape[0])
-        rgb = r / 255.0
+
+        rgb = np.zeros((temp.shape[0], temp.shape[1], 1))
+        rgb[:, :, 0] = r / 255.0
         # rgb[:, :, 1] = g / 255.0
         # rgb[:, :, 2] = b / 255.0
 
