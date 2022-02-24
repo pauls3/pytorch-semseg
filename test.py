@@ -147,7 +147,7 @@ def test(args):
         # pred = misc.imresize(pred, orig_size, "nearest", mode="F")
         decoded = loader.decode_segmap(pred)
 
-        print(decoded)
+        # print(decoded)
 
         # out_image = Image.frombuffer((out_size[1],out_size[0]), decoded)
         # out_image.save(outname)
