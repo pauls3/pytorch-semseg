@@ -150,8 +150,10 @@ def test(args):
         # pred = misc.imresize(pred, orig_size, "nearest", mode="F")
         decoded = loader.decode_segmap(pred)
 
-        # misc.imsave(outname, decoded[:,:,0])
-        Image.fromarray((decoded[:,:,0]).astype(np.uint8)).save(outname)
+        misc.imsave(outname, decoded)
+
+        # Use this for label id out
+        # Image.fromarray((decoded[:,:,0]).astype(np.uint8)).save(outname)
 
         # if(ii):
         #     print(pred)
