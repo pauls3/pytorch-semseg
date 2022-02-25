@@ -8,7 +8,7 @@ import scipy.misc as misc
 from ptsemseg.models import get_model
 from ptsemseg.loader import get_loader
 from ptsemseg.utils import convert_state_dict
-np.set_printoptions(threshold=sys.maxsize)
+np.set_printoptions(threshold=500)
 
 try:
     import pydensecrf.densecrf as dcrf
@@ -154,7 +154,7 @@ def test(args):
         if(ii):
             print(pred)
             print("---------")
-            print(decoded)
+            print(decoded[:,:,0])
         #
         # print("Segmentation Mask Saved at: {}".format(args.out_path))
         ii = False
