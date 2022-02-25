@@ -4,7 +4,6 @@ import argparse, glob
 import numpy as np
 import scipy.misc as misc
 
-import cv2
 from ptsemseg.models import get_model
 from ptsemseg.loader import get_loader
 from ptsemseg.utils import convert_state_dict
@@ -147,8 +146,7 @@ def test(args):
         # pred = misc.imresize(pred, orig_size, "nearest", mode="F")
         decoded = loader.decode_segmap(pred)
 
-        cv2.imwrite(outname, decoded[:, :, 1])
-        # misc.imsave(outname, decoded)
+        misc.imsave(outname, decoded[:,:,0])
         #
         # print("Segmentation Mask Saved at: {}".format(args.out_path))
 
