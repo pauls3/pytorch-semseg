@@ -9,6 +9,7 @@ from ptsemseg.models import get_model
 from ptsemseg.loader import get_loader
 from ptsemseg.utils import convert_state_dict
 np.set_printoptions(threshold=500)
+from PIL import Image
 
 try:
     import pydensecrf.densecrf as dcrf
@@ -149,12 +150,13 @@ def test(args):
         # pred = misc.imresize(pred, orig_size, "nearest", mode="F")
         decoded = loader.decode_segmap(pred)
 
-        misc.imsave(outname, decoded[:,:,0])
+        # misc.imsave(outname, decoded[:,:,0])
+        Image.fromarray((decoded[:,:,0]).astype(np.uint8)).save(outname)
 
-        if(ii):
-            print(pred)
-            print("---------")
-            print(decoded[:,:,0])
+        # if(ii):
+        #     print(pred)
+        #     print("---------")
+        #     print(decoded[:,:,0])
         #
         # print("Segmentation Mask Saved at: {}".format(args.out_path))
         ii = False
