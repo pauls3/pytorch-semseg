@@ -7,6 +7,7 @@ import scipy.misc as misc
 from ptsemseg.models import get_model
 from ptsemseg.loader import get_loader
 from ptsemseg.utils import convert_state_dict
+np.set_printoptions(threshold=sys.maxsize)
 
 try:
     import pydensecrf.densecrf as dcrf
@@ -72,6 +73,7 @@ def test(args):
         outdir += '/'
     if not os.path.exists(os.path.dirname(outdir)):
         os.makedirs(os.path.dirname(outdir))
+    ii = True
     for f in tqdm(allfiles, "Calculating predictions..."):
         outname = outdir
         if outp_is_dir:
@@ -147,8 +149,14 @@ def test(args):
         decoded = loader.decode_segmap(pred)
 
         misc.imsave(outname, decoded[:,:,0])
+
+        if(ii):
+            print(pred)
+            print("---------")
+            print(decoded)
         #
         # print("Segmentation Mask Saved at: {}".format(args.out_path))
+        ii = False
 
 
 if __name__ == "__main__":
