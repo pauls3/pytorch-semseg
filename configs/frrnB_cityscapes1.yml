@@ -32,4 +32,4 @@ training:
     visdom: False
     loss:
         name: cross_entropy
-    # resume: /home/stanik/repos/pytorch-semseg/pretrained_models/wide_resnet38_deeplab_vistas.pth.tar
+    resume: None
