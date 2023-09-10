@@ -8,21 +8,21 @@ data:
     img_cols: 512
     path: /home/stanik/rtis_lab/data/RailSem19/rs19_4000/
 training:
-    train_iters: 250000
+    train_iters: 200000
     batch_size: 16
     n_workers: 4
     val_interval: 1500
     print_interval: 25
     optimizer:
         name: adam
-        lr: 3.0e-3
+        lr: 1.0e-3
     augmentations:
         brightness: 1.12                            
         saturation: 1.12                                
         contrast: 1.12                                                 
         rotate: 14                                 
         vflip: 0.5
-    l_rate: 3.0e-3
+    l_rate: 1.0e-3
     lr_schedule: 
         name: cosine_annealing
         T_max: 500
@@ -31,4 +31,4 @@ training:
     visdom: False
     loss:
         name: cross_entropy
-    resume: /home/stanik/repos/pytorch-semseg/runs/frrnB_cityscapes1/bs_8_160k_iter_best/frrnB_cityscapes_rs19_best_model.pkl
+    resume: /home/stanik/repos/pytorch-semseg/runs/frrnB_cityscapes1/82229/frrnB_cityscapes_rs19_best_model.pkl

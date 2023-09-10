@@ -1,0 +1,19 @@
+CUDA_VISIBLE_DEVICES="2" python3 test.py --model_path ./runs/frrnB_cityscapes1/bs_8_160k_iter_best/frrnB_cityscapes_rs19_best_model.pkl --dataset cityscapes_rs19 --no-dcrf --no-img_norm --img_path /home/stanik/rtis_lab/data/Cityscapes/fine_images_all/test --out_path ./runs/frrnb_cityscapes_test/2
+
+CUDA_VISIBLE_DEVICES="2" python3 validate.py --config ./configs/frrnB_rs19-4k_val.yml --model_path ./runs/frrnb_rs19/rs19-4k_fine-tune_75k_175k_iter/frrnB_railsem19_best_model.pkl --no-eval_flip 
+
+
+
+https://drive.google.com/file/d/1nkwZpXoZEImltjm_OgnU6eBXq6-wxboh/view?usp=sharing
+
+wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1nkwZpXoZEImltjm_OgnU6eBXq6-wxboh' -O nevada_test_images.zip
+
+
+CUDA_VISIBLE_DEVICES="2" python3 test.py --model_path ./runs/frrnb_rs19/rs19-4k_fine-tune_75k_iter/frrnB_railsem19_best_model.pkl --dataset railsem19 --no-dcrf --resize_pred --img_path /home/stanik/datasets/nevada_test_images --out_path ./runs/frrnb_rs19_nevada_test/4k_0
+
+CUDA_VISIBLE_DEVICES="2" python3 test.py --model_path ./runs/frrnb_rs19/rs19-full_fine-tune_275k_iter/frrnB_railsem19_best_model.pkl --dataset railsem19 --no-dcrf --resize_pred --img_path /home/stanik/datasets/nevada_test_images --out_path ./runs/frrnb_rs19_nevada_test/full_0
+
+
+CUDA_VISIBLE_DEVICES="6" python3 validate.py --config ./configs/frrnB_cityscapes1.yml --model_path ./runs/frrnB_cityscapes1/82229/frrnB_cityscapes_rs19_best_model.pkl --no-eval_flip 
+
+CUDA_VISIBLE_DEVICES="6" python3 test.py --model_path ./runs/frrnB_cityscapes1/82229/frrnB_cityscapes_rs19_best_model.pkl --dataset cityscapes_rs19 --no-dcrf --no-img_norm --img_path /home/stanik/rtis_lab/data/Cityscapes/fine_images_all/test --out_path ./runs/frrnb_cityscapes_test/5
