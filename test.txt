@@ -16,4 +16,4 @@ CUDA_VISIBLE_DEVICES="2" python3 test.py --model_path ./runs/frrnb_rs19/rs19-ful
 
 CUDA_VISIBLE_DEVICES="6" python3 validate.py --config ./configs/frrnB_cityscapes1.yml --model_path ./runs/frrnB_cityscapes1/82229/frrnB_cityscapes_rs19_best_model.pkl --no-eval_flip 
 
-CUDA_VISIBLE_DEVICES="6" python3 test.py --model_path ./runs/frrnB_cityscapes1/82229/frrnB_cityscapes_rs19_best_model.pkl --dataset cityscapes_rs19 --no-dcrf --no-img_norm --img_path /home/stanik/rtis_lab/data/Cityscapes/fine_images_all/test --out_path ./runs/frrnb_cityscapes_test/5
+CUDA_VISIBLE_DEVICES="6" python3 test.py --model_path ./runs/frrnB_cityscapes1/82229/frrnB_cityscapes_rs19_best_model.pkl --dataset cityscapes_rs19 --no-dcrf --no-img_norm --img_path /home/stanik/rtis_lab/data/Cityscapes/fine_images_all/test --out_path ./runs/frrnb_cityscapes_test/5 --resize_pred
