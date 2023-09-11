@@ -85,6 +85,7 @@ class railanomaliesLoader(data.Dataset):
         self.void_classes = [250, 255]
         self.valid_classes = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]
         self.class_names = [
+            "unlabled",
             "road",
             "sidewalk",
             "construction",
@@ -105,7 +106,7 @@ class railanomaliesLoader(data.Dataset):
             "rail-embedded",
             "mud-pumping",]
 
-        self.ignore_index = 255
+        self.ignore_index = 250
         self.class_map = dict(zip(self.valid_classes, range(19)))
 
         if not test_mode:
