@@ -82,7 +82,7 @@ class railanomaliesLoader(data.Dataset):
             self.files[split] = recursive_glob(rootdir=self.images_base, suffix=".jpg")
         if not test_mode:
             print("INFO FOUND IMGS", split, len(self.files[split]), self.images_base, img_size)
-        self.void_classes = [255]
+        self.void_classes = [250, 255]
         self.valid_classes = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]
         self.class_names = [
             "road",
