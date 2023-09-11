@@ -15,14 +15,14 @@ training:
     print_interval: 25
     optimizer:
         name: adam
-        lr: 1.0e-4
+        lr: 2.0e-5
     augmentations:
         brightness: 1.12                            
         saturation: 1.12                                
         contrast: 1.12                                                 
         rotate: 14                                 
         vflip: 0.5
-    l_rate: 1.0e-4
+    l_rate: 2.0e-5
     lr_schedule: 
         name: cosine_annealing
         T_max: 500
