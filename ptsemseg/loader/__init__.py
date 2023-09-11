@@ -10,6 +10,7 @@ from ptsemseg.loader.sunrgbd_loader import SUNRGBDLoader
 from ptsemseg.loader.mapillary_vistas_loader import mapillaryVistasLoader
 from ptsemseg.loader.cityscapes_loader_rs19 import cityscapesLoader_rs19
 from ptsemseg.loader.railsem19_loader import railsem19Loader
+from ptsemseg.loader.railanomalies_loader import railanomaliesLoader
 
 def get_loader(name):
     """get_loader
@@ -26,5 +27,6 @@ def get_loader(name):
         "sunrgbd": SUNRGBDLoader,
         "vistas": mapillaryVistasLoader,
         "cityscapes_rs19": cityscapesLoader_rs19,
-        "railsem19": railsem19Loader
+        "railsem19": railsem19Loader,
+        "railanomalies": railanomaliesLoader
     }[name]
