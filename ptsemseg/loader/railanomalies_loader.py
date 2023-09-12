@@ -161,9 +161,9 @@ class railanomaliesLoader(data.Dataset):
         :param lbl:
         """
         img = m.imresize(img, (self.img_size[0], self.img_size[1]))  # uint8 with RGB mode
-        print(img.shape)
         img = img[:, :, ::-1]  # RGB -> BGR
         img = img.astype(np.float64)
+        print(img.shape)
         img -= self.mean
         if self.img_norm:
             # Resize scales images from 0 to 255, thus we need
