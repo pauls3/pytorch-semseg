@@ -147,6 +147,9 @@ class railanomaliesLoader(data.Dataset):
         lbl = m.imread(lbl_path)
         lbl = self.encode_segmap(np.array(lbl, dtype=np.uint8))
 
+        if(img.shape == (1080,1920,4)):
+            print(img_path)
+
         if not is_offline_res and self.augmentations is not None:
             img, lbl = self.augmentations(img, lbl)
 
@@ -164,8 +167,6 @@ class railanomaliesLoader(data.Dataset):
         img = m.imresize(img, (self.img_size[0], self.img_size[1]))  # uint8 with RGB mode
         img = img[:, :, ::-1]  # RGB -> BGR
         img = img.astype(np.float64)
-        if(img.shape == (512,512,4)):
-            print(tmp.shape)
         img -= self.mean
         if self.img_norm:
             # Resize scales images from 0 to 255, thus we need
