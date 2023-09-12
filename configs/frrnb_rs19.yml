@@ -9,10 +9,10 @@ data:
     path: /home/stanik/rtis_lab/data/RailSem19/custom_split/
 training:
     train_iters: 350000
-    batch_size: 16
-    n_workers: 4
-    val_interval: 1500
-    print_interval: 25
+    batch_size: 10
+    n_workers: 2
+    val_interval: 1
+    print_interval: 1500
     optimizer:
         name: adam
         lr: 3.0e-4
