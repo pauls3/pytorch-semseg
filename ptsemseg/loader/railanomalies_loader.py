@@ -8,6 +8,8 @@ from torch.utils import data
 from ptsemseg.utils import recursive_glob
 from ptsemseg.augmentations import Compose, RandomHorizontallyFlip, RandomRotate, Scale
 
+import PIL.Image
+
 
 class railanomaliesLoader(data.Dataset):
 
@@ -147,9 +149,6 @@ class railanomaliesLoader(data.Dataset):
         lbl = m.imread(lbl_path)
         lbl = self.encode_segmap(np.array(lbl, dtype=np.uint8))
 
-        if(img.shape == (1080,1920,4)):
-            print(img_path)
-
         if not is_offline_res and self.augmentations is not None:
             img, lbl = self.augmentations(img, lbl)
 
@@ -163,7 +162,12 @@ class railanomaliesLoader(data.Dataset):
         :param img:
         :param lbl:
         """
-        tmp = img
+        
+
+        if (img.shape[2] == 4):
+            img = PIL.Image.convert('RGB')
+
+
         img = m.imresize(img, (self.img_size[0], self.img_size[1]))  # uint8 with RGB mode
         img = img[:, :, ::-1]  # RGB -> BGR
         img = img.astype(np.float64)
