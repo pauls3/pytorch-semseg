@@ -10,7 +10,7 @@ data:
 training:
     train_iters: 350000
     batch_size: 10
-    n_workers: 2
+    n_workers: 4
     val_interval: 1
     print_interval: 1500
     optimizer:
