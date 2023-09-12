@@ -9,9 +9,9 @@ data:
     path: /home/stanik/rtis_lab/data/rtis-rail-2022v7/custom_split/
 training:
     train_iters: 350000
-    batch_size: 16
+    batch_size: 10
     n_workers: 4
-    val_interval: 1500
+    val_interval: 1
     print_interval: 25
     optimizer:
         name: adam
