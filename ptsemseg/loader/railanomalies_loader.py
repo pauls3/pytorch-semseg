@@ -163,7 +163,10 @@ class railanomaliesLoader(data.Dataset):
         img = m.imresize(img, (self.img_size[0], self.img_size[1]))  # uint8 with RGB mode
         img = img[:, :, ::-1]  # RGB -> BGR
         img = img.astype(np.float64)
-        print(img.shape)
+        if(img.shape == (512,512,4)):
+            print(img)
+            print('\n')
+            print(lbl)
         img -= self.mean
         if self.img_norm:
             # Resize scales images from 0 to 255, thus we need
@@ -218,7 +221,7 @@ if __name__ == "__main__":
 
     augmentations = Compose([Scale(2048), RandomRotate(10), RandomHorizontallyFlip(0.5)])
 
-    local_path = "../../../../rtis_lab/data/rtis-rail-2022v8/custom_split/"
+    local_path = "../../../../rtis_lab/data/rtis-rail-2022v7/custom_split/"
     dst = railanomaliesLoader(local_path, is_transform=True, augmentations=augmentations)
     bs = 4
     trainloader = data.DataLoader(dst, batch_size=bs, num_workers=0)
