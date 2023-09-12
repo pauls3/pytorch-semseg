@@ -152,6 +152,7 @@ class railanomaliesLoader(data.Dataset):
         if not is_offline_res and self.augmentations is not None:
             img, lbl = self.augmentations(img, lbl)
 
+
         if not is_offline_res and self.is_transform:
             img, lbl = self.transform(img, lbl)
 
@@ -163,11 +164,16 @@ class railanomaliesLoader(data.Dataset):
         :param lbl:
         """
 
+        if img.shape == (1080, 1920):
+            print("---------------------")
+
         # If RGBA image, discard alpha channel
         if img.shape[2] == 4:
             img = img[:,:,3]
         
-        print(img.shape)
+        if img.shape == (1080, 1920):
+            print("++++++++++++++++++++++")
+       
 
         img = m.imresize(img, (self.img_size[0], self.img_size[1]))  # uint8 with RGB mode
         img = img[:, :, ::-1]  # RGB -> BGR
