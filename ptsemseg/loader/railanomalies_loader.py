@@ -163,18 +163,6 @@ class railanomaliesLoader(data.Dataset):
         :param img:
         :param lbl:
         """
-
-        tmp = img.shape
-
-        # If RGBA image, discard alpha channel
-        if img.shape[2] == 4:
-            img = img[:,:,3]
-        
-        if img.shape == (1080, 1920):
-            print("++++++++++++++++++++++")
-            print(tmp)
-       
-
         img = m.imresize(img, (self.img_size[0], self.img_size[1]))  # uint8 with RGB mode
         img = img[:, :, ::-1]  # RGB -> BGR
         img = img.astype(np.float64)
@@ -232,7 +220,7 @@ if __name__ == "__main__":
 
     augmentations = Compose([Scale(2048), RandomRotate(10), RandomHorizontallyFlip(0.5)])
 
-    local_path = "../../../../rtis_lab/data/rtis-rail-2022v7/custom_split/"
+    local_path = "../../../../rtis_lab/data/rtis-rail-rgba2rgb/custom_split/"
     dst = railanomaliesLoader(local_path, is_transform=True, augmentations=augmentations)
     bs = 4
     trainloader = data.DataLoader(dst, batch_size=bs, num_workers=0)
