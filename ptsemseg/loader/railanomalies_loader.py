@@ -162,11 +162,10 @@ class railanomaliesLoader(data.Dataset):
         :param img:
         :param lbl:
         """
-        
 
-        if (img.shape[2] == 4):
-            img = PIL.Image.convert('RGB')
-
+        # If RGBA image, discard alpha channel
+        if img.shape[2] == 4:
+            img = img[:,:,3]
 
         img = m.imresize(img, (self.img_size[0], self.img_size[1]))  # uint8 with RGB mode
         img = img[:, :, ::-1]  # RGB -> BGR
