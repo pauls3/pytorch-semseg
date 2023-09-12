@@ -164,8 +164,7 @@ class railanomaliesLoader(data.Dataset):
         :param lbl:
         """
 
-        if img.shape == (1080, 1920):
-            print("---------------------")
+        tmp = img.shape
 
         # If RGBA image, discard alpha channel
         if img.shape[2] == 4:
@@ -173,6 +172,7 @@ class railanomaliesLoader(data.Dataset):
         
         if img.shape == (1080, 1920):
             print("++++++++++++++++++++++")
+            print(tmp)
        
 
         img = m.imresize(img, (self.img_size[0], self.img_size[1]))  # uint8 with RGB mode
