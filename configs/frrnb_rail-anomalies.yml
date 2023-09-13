@@ -2,7 +2,7 @@ model:
     arch: frrnB
 data:
     dataset: railanomalies
-    train_split: train
+    train_split: trainVal
     val_split: val
     img_rows: 512
     img_cols: 512
@@ -15,14 +15,14 @@ training:
     print_interval: 1500
     optimizer:
         name: adam
-        lr: 2.0e-4
+        lr: 1.0e-4
     augmentations:
         brightness: 1.12                            
         saturation: 1.12                                
         contrast: 1.12                                                 
         rotate: 14                                 
         vflip: 0.5
-    l_rate: 2.0e-4
+    l_rate: 1.0e-4
     lr_schedule: 
         name: cosine_annealing
         T_max: 500
