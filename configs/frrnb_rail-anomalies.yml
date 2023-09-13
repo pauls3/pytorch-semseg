@@ -3,7 +3,7 @@ model:
 data:
     dataset: railanomalies
     train_split: trainVal
-    val_split: val
+    val_split: test
     img_rows: 512
     img_cols: 512
     path: /home/stanik/rtis_lab/data/rtis-rail-rgba2rgb/custom_split/
